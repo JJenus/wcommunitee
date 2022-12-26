@@ -22,6 +22,9 @@ public class AuthController {
         if (res == null){
             return ResponseEntity.ok(Collections.singletonMap("error", "User doesn't exist"));
         }
+        if (res.getToken() == null){
+            return ResponseEntity.ok(Collections.singletonMap("error", "Invalid password"));
+        }
 
         return ResponseEntity.ok(res);
     }

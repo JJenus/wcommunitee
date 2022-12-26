@@ -2,11 +2,9 @@ package com.predictz.winningcommunitee.controller;
 
 import com.predictz.winningcommunitee.model.AppUser;
 import com.predictz.winningcommunitee.repository.AppUserRepo;
+import com.predictz.winningcommunitee.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,10 +13,15 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     @Autowired
-    private AppUserRepo appUserRepo;
+    private AppUserService appUserService;
 
     @GetMapping
     public List<AppUser> appUsers(){
-        return appUserRepo.findAll();
+        return appUserService.getUsers();
+    }
+
+    @PutMapping
+    public AppUser update(@RequestBody AppUser appUser){
+        return appUserService.update(appUser);
     }
 }

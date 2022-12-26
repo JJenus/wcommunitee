@@ -28,9 +28,9 @@ public class AppUserService implements UserDetailsService {
         return userRepo.findAll();
     }
 
-    public AppUser upadate(AppUser user){
+    public AppUser update(AppUser user){
         Optional<AppUser> optionalAppUser = userRepo.findById(user.getId());
-        if (optionalAppUser.isPresent()) {
+        if (!optionalAppUser.isPresent()) {
             return null;
         }
         return userRepo.save(user);

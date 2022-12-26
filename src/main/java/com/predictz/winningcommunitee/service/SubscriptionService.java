@@ -2,6 +2,7 @@ package com.predictz.winningcommunitee.service;
 
 import com.predictz.winningcommunitee.model.Subscription;
 import com.predictz.winningcommunitee.repository.SubscriptionRepo;
+import com.predictz.winningcommunitee.repository.UserSubscriptionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,8 @@ import java.util.Optional;
 public class SubscriptionService {
     @Autowired
     SubscriptionRepo subscriptionRepo;
+    @Autowired
+    UserSubscriptionRepo userSubscriptionRepo;
 
     public List<Subscription> getSubscriptions(){
         return subscriptionRepo.findAll();
@@ -40,6 +43,9 @@ public class SubscriptionService {
     }
 
     public void del(Long id){
+        Subscription subscription = getSubscription(id);
+//        userSubscriptionRepo.deleteBySubscription(subscription);
+        userSubscriptionRepo.deleteSubscription(id);
         subscriptionRepo.deleteById(id);
     }
 }

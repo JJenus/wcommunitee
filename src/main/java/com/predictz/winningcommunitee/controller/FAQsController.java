@@ -30,7 +30,7 @@ public class FAQsController {
     }
 
     @DeleteMapping("/{id}")
-    void del(Long id){
+    void del(@PathVariable Long id){
         faQsService.delFaq(id);
     }
 }

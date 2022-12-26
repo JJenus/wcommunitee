@@ -75,7 +75,9 @@ public class AuthService {
 
             return authToken;
         }catch (AuthenticationException authExc){
-            throw new RuntimeException("Invalid Login Credentials");
+            authExc.printStackTrace();
+//            throw new RuntimeException("Invalid Login Credentials");
         }
+        return new AuthToken();
     }
 }

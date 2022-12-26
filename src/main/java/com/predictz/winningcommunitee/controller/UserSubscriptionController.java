@@ -41,7 +41,7 @@ public class UserSubscriptionController {
     }
 
     @PutMapping
-    public ResponseEntity<?> updateSubscription(UserSubscription subscription){
+    public ResponseEntity<?> updateSubscription(@RequestBody UserSubscription subscription){
         UserSubscription userSubscription =  userSubscriptionService.update(subscription);
 
         if (userSubscription == null){
