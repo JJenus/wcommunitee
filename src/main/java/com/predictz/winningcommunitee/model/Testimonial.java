@@ -16,4 +16,5 @@ public class Testimonial {
     private String userName;
     private String imgUrl;
     private String testimony;
+    private int rating;
 }
