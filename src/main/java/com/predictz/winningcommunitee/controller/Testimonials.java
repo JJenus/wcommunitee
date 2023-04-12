@@ -1,6 +1,7 @@
 package com.predictz.winningcommunitee.controller;
 
 import com.predictz.winningcommunitee.model.Testimonial;
+import com.predictz.winningcommunitee.model.Winner;
 import com.predictz.winningcommunitee.service.TestimonialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,5 +33,20 @@ public class Testimonials {
     @DeleteMapping("/{id}")
     void del(@PathVariable("id") Long id){
         testimonialService.del(id);
+    }
+
+    @GetMapping("/won")
+    List<Winner> getWon(){
+        return testimonialService.getWinners();
+    }
+
+    @PostMapping("/won")
+    Winner createWon(@RequestBody Winner winner){
+        return  testimonialService.saveWon(winner);
+    }
+
+    @DeleteMapping("/won/{id}")
+    void delWon(@PathVariable("id") Long id){
+        testimonialService.delWinner(id);
     }
 }
