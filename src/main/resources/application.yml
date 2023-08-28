@@ -4,24 +4,32 @@ server:
     include-binding-errors: always
 spring:
   datasource:
-#    Winning Community
-#    password: "purpbelieves"
-#    url: "jdbc:mysql://mysql-winningcommunitee.alwaysdata.net/winningcommunitee_db?reconnect=true"
-#    username: "294017"
-
 #    Solid Payout
     password: "adrian10jet"
-    url: "jdbc:mysql://mysql-solidpayout.alwaysdata.net/solidpayout_db?reconnect=true"
+    jdbcUrl: "jdbc:mysql://mysql-solidpayout.alwaysdata.net/solidpayout_db?reconnect=true"
     username: "309217"
+
+#    LOCAL DB
 #    password:
-#    url: "jdbc:mysql://localhost:3306/predictz_db?reconnect=true"
+#    jdbcUrl: "jdbc:mysql://localhost:3306/predictz_db?reconnect=true"
+#   username: root
+
+  s-datasource:
+#    BTIPS
+    password: "adrian10jet"
+    jdbcUrl: "jdbc:mysql://mysql-solidpayout.alwaysdata.net/solidpayout_btips_db?reconnect=true"
+    username: "309217"
+#    jdbcUrl: "jdbc:mysql://localhost:3306/btips_db?reconnect=true"
 #    username: root
+#    password:
 
   jpa:
+    generate-ddl: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
+        physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
         dialect: org.hibernate.dialect.MySQL5Dialect
         format_sql: true
     show-sql: false
